@@ -1,22 +1,25 @@
 <script setup lang="ts">
-import {ref} from 'vue'
+import { ref } from "vue";
 import {
   UserOutlined,
   VideoCameraOutlined,
   UploadOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  MailOutlined
-} from '@ant-design/icons-vue';
+  MailOutlined,
+} from "@ant-design/icons-vue";
 
-const selectedKeys= ref<string[]>(['1'])
-const collapsed= ref<boolean>(false)
+const selectedKeys = ref<string[]>(["1"]);
+const collapsed = ref<boolean>(false);
 </script>
 
 <template>
-  <a-layout style="height: 100vh;width: 100vw">
-    <a-layout-sider  v-model:collapsed="collapsed" :trigger="null" collapsible>
-      <div class="logo" style="height: 50px;width: 80%;background: #888888;margin: 20px auto" />
+  <a-layout style="height: 100vh; width: 100vw">
+    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
+      <div
+        class="logo"
+        style="height: 50px; width: 80%; background: #888888; margin: 20px auto"
+      />
       <a-menu theme="dark" mode="inline" v-model:selectedKeys="selectedKeys">
         <a-menu-item key="1">
           <user-outlined />
@@ -47,18 +50,29 @@ const collapsed= ref<boolean>(false)
       </a-menu>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header style="background: #fff; padding:0 20px;box-sizing: border-box">
+      <a-layout-header
+        style="background: #fff; padding: 0 20px; box-sizing: border-box"
+      >
         <menu-unfold-outlined
-            v-if="collapsed"
-            class="trigger"
-            @click="() => (collapsed = !collapsed)"
+          v-if="collapsed"
+          class="trigger"
+          @click="() => (collapsed = !collapsed)"
         />
-        <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
+        <menu-fold-outlined
+          v-else
+          class="trigger"
+          @click="() => (collapsed = !collapsed)"
+        />
       </a-layout-header>
       <a-layout-content
-          :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
+        :style="{
+          margin: '24px 16px',
+          padding: '24px',
+          background: '#fff',
+          minHeight: '280px',
+        }"
       >
-        <router-view/>
+        <router-view />
       </a-layout-content>
     </a-layout>
   </a-layout>
